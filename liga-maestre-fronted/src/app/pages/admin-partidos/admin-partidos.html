@@ -1,0 +1,166 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+    <div>
+      <h1 class="mb-2">Admin · Partidos</h1>
+      <p class="text-secondary mb-4">Crear y editar partidos (fecha, árbitro, ubicación y resultado).</p>
+    </div>
+
+    <button class="btn btn-outline-secondary" (click)="load()" [disabled]="loading">
+      {{ loading ? 'Cargando...' : 'Recargar' }}
+    </button>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="ok" class="alert alert-success">{{ ok }}</div>
+
+  <!-- CREAR -->
+  <div class="glass-card mb-4 p-3">
+    <h5 class="fw-bold mb-3">Crear partido</h5>
+
+    <form class="row g-3" (submit)="create($event)">
+      <div class="col-md-4">
+        <label class="form-label">Competición</label>
+        <select class="form-select" [(ngModel)]="competicion" name="competicion">
+          <option value="Fútbol Sala">Fútbol Sala</option>
+          <option value="Baloncesto">Baloncesto</option>
+          <option value="Voleibol">Voleibol</option>
+          <option value="Tenis">Tenis</option>
+          <option value="Balonmano">Balonmano</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Equipo local</label>
+        <input class="form-control" [(ngModel)]="equipoLocal" name="equipoLocal" placeholder="Ej: 2º DAM" />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Equipo visitante</label>
+        <input class="form-control" [(ngModel)]="equipoVisitante" name="equipoVisitante" placeholder="Ej: 1º Bach B" />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Árbitro</label>
+        <input class="form-control" [(ngModel)]="arbitro" name="arbitro" placeholder="Ej: Dianys" />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Fecha</label>
+        <input class="form-control" type="datetime-local" [(ngModel)]="fecha" name="fecha" />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Ubicación</label>
+        <input class="form-control" [(ngModel)]="ubicacion" name="ubicacion" placeholder="Ej: Pabellón cubierto" />
+      </div>
+
+      <div class="col-12 d-flex justify-content-end">
+        <button class="btn btn-primary" type="submit" [disabled]="loading">
+          {{ loading ? 'Creando...' : 'Crear partido' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- LISTA / EDITAR -->
+  <div class="glass-card p-3">
+    <h5 class="fw-bold mb-3">Partidos</h5>
+
+    <div *ngIf="loading && !partidos.length" class="text-secondary">Cargando...</div>
+
+    <div class="table-responsive" *ngIf="partidos.length">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Competición</th>
+            <th>Partido</th>
+            <th>Fecha</th>
+            <th>Árbitro</th>
+            <th>Ubicación</th>
+            <th>Resultado</th>
+            <th style="width: 200px"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let p of partidos">
+            <ng-container *ngIf="editId !== p._id; else editRow">
+              <td>{{ p.competicion }}</td>
+              <td>{{ p.equipoLocal }} vs {{ p.equipoVisitante }}</td>
+              <td>{{ p.fecha | date:'short' }}</td>
+              <td>{{ p.arbitro }}</td>
+              <td>{{ p.ubicacion }}</td>
+              <td>
+                <span *ngIf="p.golesLocal !== null && p.golesVisitante !== null; else noRes">
+                  <strong>{{ p.golesLocal }} - {{ p.golesVisitante }}</strong>
+                </span>
+                <ng-template #noRes><span class="text-secondary">Pendiente</span></ng-template>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary" (click)="startEdit(p)">Editar</button>
+              </td>
+            </ng-container>
+
+            <ng-template #editRow>
+              <td>
+                <select class="form-select form-select-sm" [(ngModel)]="edit.competicion" name="editComp">
+                  <option value="Fútbol Sala">Fútbol Sala</option>
+                  <option value="Baloncesto">Baloncesto</option>
+                  <option value="Voleibol">Voleibol</option>
+                  <option value="Tenis">Tenis</option>
+                  <option value="Balonmano">Balonmano</option>
+                </select>
+              </td>
+
+              <td>
+                <div class="d-flex gap-2">
+                  <input class="form-control form-control-sm" [(ngModel)]="edit.equipoLocal" name="editLocal" />
+                  <input class="form-control form-control-sm" [(ngModel)]="edit.equipoVisitante" name="editVis" />
+                </div>
+              </td>
+
+              <td>
+                <input class="form-control form-control-sm" type="datetime-local" [(ngModel)]="edit.fecha" name="editFecha" />
+              </td>
+
+              <td>
+                <input class="form-control form-control-sm" [(ngModel)]="edit.arbitro" name="editArbitro" />
+              </td>
+
+              <td>
+                <input class="form-control form-control-sm" [(ngModel)]="edit.ubicacion" name="editUbicacion" />
+              </td>
+
+              <td>
+                <div class="d-flex gap-2 align-items-center">
+                  <input class="form-control form-control-sm" style="width:80px" [(ngModel)]="edit.golesLocal" name="gL" />
+                  <span>-</span>
+                  <input class="form-control form-control-sm" style="width:80px" [(ngModel)]="edit.golesVisitante" name="gV" />
+                  <select class="form-select form-select-sm" style="width:140px" [(ngModel)]="edit.estado" name="estado">
+                    <option value="programado">programado</option>
+                    <option value="jugado">jugado</option>
+                  </select>
+                </div>
+              </td>
+
+              <td class="text-end">
+                <div class="d-flex gap-2 justify-content-end">
+                  <button class="btn btn-sm btn-success" (click)="saveEdit(p._id)" [disabled]="loading">
+                    Guardar
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary" (click)="cancelEdit()" [disabled]="loading">
+                    Cancelar
+                  </button>
+                </div>
+              </td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!loading && !partidos.length" class="text-secondary">
+      No hay partidos aún. Crea el primero arriba.
+    </div>
+  </div>
+</div>

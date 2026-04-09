@@ -1,0 +1,155 @@
+<div class="container py-5">
+
+  <header class="mb-4">
+    <h1 class="mb-2">Árbitros</h1>
+    <p class="text-secondary mb-0">
+      Consulta la nómina de árbitros de la liga, su experiencia y los partidos dirigidos.
+      La estructura está preparada para añadir estadísticas avanzadas (historial disciplinario,
+      carga de trabajo por jornada, etc.).
+    </p>
+  </header>
+
+  <!-- FILTROS -->
+  <section class="glass-card mb-4">
+    <div class="row g-3 align-items-end">
+      <div class="col-12 col-md-6">
+        <label for="buscadorArbitros" class="form-label fw-semibold">Buscar árbitro</label>
+        <input
+          type="text"
+          id="buscadorArbitros"
+          class="form-control"
+          placeholder="Escribe el nombre del árbitro…"
+          [value]="texto"
+          (input)="onTextoChange($event)"
+        >
+      </div>
+
+      <div class="col-12 col-md-4">
+        <label for="filtroDeporteArbitro" class="form-label fw-semibold">Deporte principal</label>
+        <select
+          id="filtroDeporteArbitro"
+          class="form-select"
+          [value]="deporte"
+          (change)="onDeporteChange($event)"
+        >
+          <option value="">Todos los deportes</option>
+          <option value="futbol">Fútbol Sala</option>
+          <option value="baloncesto">Baloncesto</option>
+          <option value="voleibol">Voleibol</option>
+          <option value="balonmano">Balonmano</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-md-2 text-md-end">
+        <small class="text-muted d-block">Filtrado en tiempo real.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLA DE ÁRBITROS -->
+  <section class="glass-card">
+    <h5 class="fw-bold mb-3">Listado de árbitros</h5>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover tabla-jugadores">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Deporte principal</th>
+            <th>Experiencia</th>
+            <th>Partidos arbitrados</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let a of arbitrosFiltrados">
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.deporteLabel }}</td>
+            <td>{{ a.experiencia }}</td>
+            <td>{{ a.partidos }}</td>
+            <td class="text-end">
+              <button
+                class="btn btn-outline-primary btn-sm"
+                data-bs-toggle="modal"
+                [attr.data-bs-target]="'#' + a.modalId"
+              >
+                Ver ficha
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <p class="small text-muted mt-3 mb-0">
+      Información de ejemplo. En la versión definitiva se podrán generar informes de carga de trabajo,
+      designaciones por jornada y estadísticas disciplinarias por árbitro.
+    </p>
+  </section>
+
+</div>
+
+<!-- MODALES  -->
+
+<div class="modal fade" id="arbitro1Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">Laura Pérez · Fútbol Sala</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Experiencia:</strong> 3 temporadas arbitrando la liga del centro.</p>
+        <p><strong>Partidos arbitrados:</strong> 42 (datos de ejemplo).</p>
+        <p><strong>Perfil:</strong> especialista en categorías mixtas y torneos de copa escolar.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="arbitro2Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">Sergio Martín · Baloncesto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Experiencia:</strong> 5 temporadas.</p>
+        <p><strong>Especialidad:</strong> partidos de fase final y torneos intercentros.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="arbitro3Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">Ana López · Voleibol</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Experiencia:</strong> 2 temporadas.</p>
+        <p><strong>Partidos arbitrados:</strong> 25 (ejemplo).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="arbitro4Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary">Carlos Díaz · Balonmano</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body small">
+        <p><strong>Experiencia:</strong> 4 temporadas.</p>
+        <p><strong>Perfil:</strong> especialista en finales de copa escolar y partidos de alta rivalidad.</p>
+      </div>
+    </div>
+  </div>
+</div>

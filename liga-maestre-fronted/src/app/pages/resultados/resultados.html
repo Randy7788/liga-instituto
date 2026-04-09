@@ -1,0 +1,53 @@
+<div class="container py-5">
+
+  <h1 class="mb-3">Resultados</h1>
+  <p class="text-secondary mb-1">
+    Consulta los resultados de cada competición filtrando por jornada o deporte.
+  </p>
+  <p class="text-secondary mb-4">
+    De momento, al no haber distinción por roles, incluye información de relleno para tener
+    una primera visión de cómo resultará el diseño final.
+  </p>
+
+  <!-- FILTRO -->
+  <div class="glass-card mb-4">
+    <h5 class="fw-bold mb-3">Filtrar por competición</h5>
+
+    <!-- (Angular) -->
+    <select class="form-select" [value]="competicion" (change)="onCompeticionChange($event)">
+      <option value="todas">Todas las competiciones</option>
+      <option value="Fútbol Sala">Fútbol Sala</option>
+      <option value="Baloncesto">Baloncesto</option>
+      <option value="Voleibol">Voleibol</option>
+    </select>
+  </div>
+
+  <!-- TABLA -->
+  <div class="glass-card">
+    <h5 class="fw-bold mb-3">Resultados de la última jornada</h5>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Fecha</th>
+            <th>Competición</th>
+            <th>Encuentro</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+
+      <tbody>
+  <tr *ngFor="let r of resultadosFiltrados">
+    <td>{{ r.fecha }}</td>
+    <td>{{ r.competicion }}</td>
+    <td>{{ r.encuentro }}</td>
+    <td><strong>{{ r.resultado }}</strong></td>
+  </tr>
+</tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>

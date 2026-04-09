@@ -1,0 +1,511 @@
+/* =========================
+   PALETA Y VARIABLES
+   ========================= */
+:root {
+  --color-bg: #f3f4f6;           /* gris muy claro */
+  --color-surface: #ffffff;      /* blanco tarjetas */
+  --color-surface-soft: #f9fafb;
+  --color-dark: #111827;         /* gris muy oscuro */
+  --color-text: #374151;         /* gris texto principal */
+  --color-muted: #6b7280;        /* gris secundario */
+  --color-border: #e5e7eb;
+
+  --color-accent: #f97316;       /* naranja principal */
+  --color-accent-dark: #ea580c;  /* naranja hover */
+  --color-accent-soft: #ffedd5;  /* naranja muy claro */
+
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.10);
+  --shadow-strong: 0 18px 45px rgba(15, 23, 42, 0.22);
+}
+
+/* =========================
+   RESET BÁSICO
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  padding-top: 72px; /* espacio para navbar fijo */
+}
+
+/* Titulares genéricos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-dark);
+  font-weight: 700;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+.navbar {
+  background: #111827; /* gris casi negro */
+}
+
+.navbar,
+.navbar a,
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #f9fafb !important;
+}
+
+.navbar-brand {
+  letter-spacing: .03em;
+}
+
+.navbar-brand span {
+  color: var(--color-accent);
+}
+
+.navbar-nav .nav-link {
+  border-radius: 999px;
+  padding: 8px 14px;
+  margin-left: .25rem;
+  margin-right: .25rem;
+  font-size: .95rem;
+  font-weight: 500;
+  transition: background-color .18s ease, color .18s ease, transform .12s ease;
+}
+
+/* hover naranja */
+.navbar-nav .nav-link:hover {
+  background-color: var(--color-accent) !important;
+  color: #111827 !important;
+  transform: translateY(-1px);
+}
+
+/* pestaña activa (añadir .active en cada html) */
+.navbar-nav .nav-link.active {
+  background-color: var(--color-accent) !important;
+  color: #111827 !important;
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+.btn-primary {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: #111827 !important;
+  font-weight: 600;
+  border-radius: 999px;
+  padding-inline: 1.4rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark) !important;
+  border-color: var(--color-accent-dark) !important;
+  color: #111827 !important;
+}
+
+.btn-outline-primary {
+  color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+  color: #111827 !important;
+  background-color: var(--color-accent-soft) !important;
+  border-color: var(--color-accent) !important;
+}
+
+/* efecto sutil en botones importantes */
+.btn-animated {
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-animated:hover {
+  transform: translateY(-2px) scale(1.02); /* se levanta + crece un poco */
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================
+   HERO PRINCIPAL (INDEX)
+   ========================= */
+
+/* Hero con imagen + overlay degradado naranja → gris oscuro */
+.hero-section {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background-image:
+    linear-gradient(to right, rgba(249,115,22,0.85), rgba(17,24,39,0.9)),
+    url("assets/img/fondos/hero-sports.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 4px solid rgba(0,0,0,0.18);
+  box-shadow: var(--shadow-strong);
+}
+
+.hero-section h1 {
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.40);
+}
+
+.hero-section p {
+  color: #f3f4f6;
+  max-width: 700px;
+}
+
+/* Botones del hero */
+.hero-btn {
+  padding: 10px 24px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.25s;
+}
+
+.hero-btn.btn-primary {
+  background-color: #f9f7f6;
+  border-color: #f97316;
+  color: #111827;
+}
+
+.hero-btn.btn-primary:hover {
+  background-color: #fb923c;
+  border-color: #fb923c;
+  color: #111827;
+}
+
+.hero-btn.btn-outline-light {
+  border-radius: 10px;
+}
+
+.hero-btn.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* =========================
+   SECCIÓN: COMPETICIONES (INDEX)
+   ========================= */
+.section-title {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.section-title.h3,
+.section-title.h2 {
+  font-weight: 700;
+}
+
+/* Tarjetas de competiciones / cards en general */
+.card {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  background-color: var(--color-surface);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: rgba(249, 115, 22, 0.35);
+}
+
+.card-title {
+  color: #111827;
+  font-weight: 600;
+}
+
+.card-text {
+  color: var(--color-muted);
+}
+
+/* =========================
+   SECCIÓN NOTICIAS (INDEX)
+   ========================= */
+#noticias {
+  position: relative;
+  padding: 4rem 0 3rem;
+  color: #f9fafb !important;
+  border-radius: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, #0f172a 0%, #1f2937 40%, #111827 100%),
+    url("assets/img/fondos/noticias-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+}
+
+/* Encabezado noticias */
+#noticias h2 {
+  color: #f9fafb !important;
+  font-weight: 700;
+}
+
+#noticias p,
+#noticias span {
+  color: #e5e7eb !important;
+}
+
+/* Carrusel noticias */
+#newsCarousel {
+  margin-top: 1rem;
+}
+
+#newsCarousel .carousel-item img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  filter: brightness(.75);
+}
+
+/* caption tipo “glass” */
+#noticias .carousel-caption {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+#noticias .carousel-caption h5 {
+  font-weight: 700;
+  text-shadow: 0 8px 25px rgba(0, 0, 0, .7);
+}
+
+#noticias .carousel-caption p {
+  font-size: .9rem;
+}
+
+#noticias .carousel-control-prev-icon,
+#noticias .carousel-control-next-icon {
+  filter: invert(1) drop-shadow(0 0 6px #000);
+}
+
+/* indicadores alargados */
+#noticias .carousel-indicators [data-bs-target] {
+  width: 26px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: rgba(249, 250, 251, 0.5);
+}
+
+#noticias .carousel-indicators .active {
+  width: 40px;
+  background-color: #ffffff;
+}
+
+/* =========================
+   RESULTADOS / CLASIFICACIONES EN EL INDEX
+   ========================= */
+.table {
+  font-size: .9rem;
+}
+
+.table thead {
+  background-color: var(--color-surface-soft);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9fafb;
+}
+
+/* =========================
+   CALENDARIO + FORMULARIO (INDEX)
+   ========================= */
+#calendario {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+form .form-control,
+form .form-select {
+  border-radius: .6rem;
+  border-color: #d1d5db;
+}
+
+form .form-control:focus,
+form .form-select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+}
+
+/* =========================
+   PÁGINAS INTERNAS “GLASS”
+   (Equipos, Resultados, Clasificaciones,
+    Jugadores, Árbitros, Contacto)
+   ========================= */
+
+/* Clase  de todas las páginas internas */
+.body-glass {
+  background:
+    radial-gradient(circle at top left, rgba(249, 115, 22, 0.20), transparent 60%),
+    linear-gradient(135deg, #e5e7eb, #f9fafb);
+  background-attachment: fixed;
+}
+
+/* Contenedor principal en páginas internas */
+.main-content {
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* Tarjetas tipo “cristal” reutilizables */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(209, 213, 219, 0.8);
+}
+
+/* Tablas dentro de tarjetas glass */
+.glass-card .table {
+  margin-bottom: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.glass-card .table thead {
+  background: rgba(255,140,0,0.18);
+  font-weight: 600;
+}
+
+.glass-card .table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Subtítulo de bloque */
+.section-subtitle {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+/* =========================
+   UTILIDADES Y HOVERS
+   ========================= */
+.hover-raise {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hover-raise:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* tablas de jugadores pequeñas */
+.tabla-jugadores th {
+  font-size: .85rem;
+  background-color: #f3f4f6;
+}
+
+.tabla-jugadores td {
+  font-size: .85rem;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  background-color: #111827;
+  color: #e5e7eb;
+  font-size: .85rem;
+}
+
+footer a {
+  color: var(--color-accent-soft);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* =========================
+   MEDIA QUERIES PERSONALIZADAS
+   ========================= */
+
+/* Ajustes para pantallas muy pequeñas (móviles < 576px) */
+@media (max-width: 576px) {
+
+  /* Títulos del hero más compactos */
+  .hero-section h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .hero-section p {
+    font-size: 0.95rem;
+  }
+
+  /* Botones del hero más ajustados */
+  .hero-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* Cards con más separación vertical */
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  /* Ajustar padding general del container */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Ajustes específicos para tablets verticales (entre 576px y 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+}
+/* =========================
+   DROPDOWNS CON TRANSICIÓN SUAVE
+   ========================= */
+
+.navbar .dropdown-menu {
+  border-radius: 0.75rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  box-shadow: var(--shadow-soft);
+  transform: translateY(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity .18s ease,
+    transform .18s ease,
+    visibility .18s ease;
+}
+/* cuando Bootstrap añade .show al menú */
+.navbar .dropdown-menu.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* estilo de los ítems del dropdown */
+.navbar .dropdown-item {
+  font-size: 0.9rem;
+  padding: 0.45rem 1rem;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-dark);
+}

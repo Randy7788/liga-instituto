@@ -1,0 +1,128 @@
+
+<div class="container py-5">
+  <header class="mb-4">
+    <h1 class="mb-2">Contacto</h1>
+    <p class="text-secondary mb-0">
+      Ponte en contacto con la administración de la liga para resolver dudas sobre inscripciones,
+      resultados, clasificaciones o incidencias durante la competición.
+    </p>
+  </header>
+
+  <div class="row g-4">
+    <!-- FAQ -->
+    <section class="col-12 col-lg-5">
+      <div class="glass-card h-100">
+        <h5 class="fw-bold mb-3">Preguntas frecuentes</h5>
+
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq1Heading">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                ¿Cómo inscribo a un equipo en la liga?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1Heading"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body small">
+                La inscripción se realiza a través del formulario oficial de la web y debe validarse
+                en Jefatura de Estudios o con el Departamento de Educación Física.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2Heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                ¿Dónde se publican los cambios de horario?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body small">
+                Los cambios se anuncian en la sección de <strong>Noticias</strong>, en el tablón del pabellón
+                y, cuando sea necesario, por correo al responsable de cada equipo.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq3Heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                ¿A qué correo puedo escribir?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading"
+                 data-bs-parent="#faqAccordion">
+              <div class="accordion-body small">
+                El correo general de la liga es:
+                <strong>liga@instituto-xyz.edu</strong>.
+                El formulario de esta página envía directamente a esa dirección.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="col-12 col-lg-7">
+      <div class="glass-card h-100">
+        <h5 class="fw-bold mb-3">Formulario de contacto</h5>
+        <p class="small text-muted">
+          Este formulario está pensado para conectarse con un servicio de envío de correo
+          en el futuro. De momento, los datos sirven como ejemplo de la interfaz final.
+        </p>
+
+        <form class="mt-3" (submit)="onSubmit($event)">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <label for="nombre" class="form-label">Nombre y apellidos</label>
+              <input type="text" id="nombre" class="form-control" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" id="email" class="form-control" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="motivo" class="form-label">Motivo de la consulta</label>
+              <select id="motivo" class="form-select" required>
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option value="inscripciones">Inscripciones</option>
+                <option value="resultados">Resultados y clasificaciones</option>
+                <option value="incidencias">Incidencias / Sanciones</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <label for="equipo" class="form-label">Equipo (opcional)</label>
+              <input type="text" id="equipo" class="form-control" placeholder="Nombre del equipo">
+            </div>
+
+            <div class="col-12">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea id="mensaje" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary btn-animated">
+                Enviar mensaje
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="alert alert-success mt-3 small" role="alert" *ngIf="enviado">
+          Mensaje enviado (simulado). En una versión futura, este formulario enviará un correo
+          real a la organización de la liga.
+        </div>
+      </div>
+    </section>
+  </div>
+  
+

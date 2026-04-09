@@ -1,0 +1,32 @@
+<div class="container py-5">
+  <h1>Mis partidos</h1>
+
+  <p *ngIf="loading">Cargando...</p>
+
+  <table *ngIf="!loading" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Competición</th>
+        <th>Partido</th>
+        <th>Fecha</th>
+        <th>Ubicación</th>
+        <th>Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of partidos">
+        <td>{{ p.competicion }}</td>
+        <td>{{ p.equipoLocal }} vs {{ p.equipoVisitante }}</td>
+        <td>{{ p.fecha | date:'short' }}</td>
+        <td>{{ p.ubicacion }}</td>
+        <td>
+          {{
+            p.golesLocal !== null && p.golesVisitante !== null
+              ? (p.golesLocal + ' - ' + p.golesVisitante)
+              : 'Pendiente'
+          }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,28 @@
+<div class="container py-5">
+  <h1 class="mb-2">Login</h1>
+  <p class="text-secondary mb-4">Inicia sesión para entrar.</p>
+
+  <form class="row g-3" (submit)="onSubmit($event)">
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input class="form-control" [(ngModel)]="email" name="email" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Password</label>
+      <input class="form-control" type="password" [(ngModel)]="password" name="password" />
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2">
+      <a routerLink="/register" class="btn btn-outline-secondary">Crear cuenta</a>
+
+      <button class="btn btn-primary" type="submit" [disabled]="loading">
+        {{ loading ? 'Ingresando...' : 'Ingresar' }}
+      </button>
+    </div>
+
+    <div class="col-12" *ngIf="errorMsg">
+      <div class="alert alert-danger mb-0">{{ errorMsg }}</div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,53 @@
+<div class="container py-5">
+  <div class="d-flex align-items-start justify-content-between gap-3">
+    <div>
+      <h1 class="mb-2">Usuarios</h1>
+      <p class="text-secondary mb-0">
+        Listado de usuarios almacenados en la Aplicación
+      </p>
+    </div>
+
+    <button class="btn btn-outline-secondary"
+            (click)="recargar()"
+            [disabled]="loading">
+      {{ loading ? 'Cargando...' : 'Recargar' }}
+    </button>
+  </div>
+
+  <div class="mt-4">
+    <div *ngIf="loading" class="text-secondary">Cargando usuarios...</div>
+
+    <div *ngIf="!loading && error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <div *ngIf="!loading && !error && users.length === 0" class="text-secondary">
+      No hay usuarios todavía.
+      <div class="mt-3">
+        <button class="btn btn-primary" (click)="irARegistro()">Ir a Registro</button>
+      </div>
+    </div>
+
+    <div *ngIf="!loading && !error && users.length > 0" class="table-responsive mt-3">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Creado</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let u of users">
+            <td>{{ u.nombre }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.rol }}</td>
+            <td>{{ u.createdAt ? (u.createdAt | date:'short') : '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

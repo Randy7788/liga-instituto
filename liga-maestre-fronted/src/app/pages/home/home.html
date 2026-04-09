@@ -1,0 +1,488 @@
+<!-- HERO / INICIO -->
+<section class="hero-section d-flex align-items-center">
+  <div class="container text-white">
+    <h1 class="display-5 fw-bold mb-3">Liga Deportiva del Instituto</h1>
+    <p class="lead mb-4">
+      Toda la información sobre equipos, resultados, clasificaciones, jugadores y árbitros del centro, en una sola web.
+    </p>
+
+    <div class="d-flex gap-3">
+      <a href="#noticias" class="btn btn-primary btn-lg hero-btn">Noticias recientes</a>
+      <a href="#competiciones" class="btn btn-outline-light btn-lg hero-btn">Ver competiciones</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN DE COMPETICIONES -->
+<section id="competiciones" class="py-5 seccion-competiciones">
+  <div class="container">
+    <h2 class="section-title h3">Competiciones de la liga</h2>
+    <div class="row g-4">
+      <!-- Fútbol -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="card h-100 hover-raise">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Fútbol Sala</h5>
+            <p class="card-text small text-secondary">
+              Liga mixta por grupos. Partidos en el pabellón cubierto.
+            </p>
+            <button class="btn btn-primary btn-sm btn-animated" data-bs-toggle="modal" data-bs-target="#inscripcionModal">
+              Inscribirse
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Baloncesto -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="card h-100 hover-raise">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Baloncesto</h5>
+            <p class="card-text small text-secondary">
+              Competición mixta con fases de grupos y eliminatorias.
+            </p>
+            <button class="btn btn-primary btn-sm btn-animated" data-bs-toggle="modal" data-bs-target="#inscripcionModal">
+              Inscribirse
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tenis -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="card h-100 hover-raise">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Tenis</h5>
+            <p class="card-text small text-secondary">
+              Torneo individual por categorías y niveles.
+            </p>
+            <button class="btn btn-primary btn-sm btn-animated" data-bs-toggle="modal" data-bs-target="#inscripcionModal">
+              Inscribirse
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Balonmano -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="card h-100 hover-raise">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Balonmano</h5>
+            <p class="card-text small text-secondary">
+              Jornadas concentradas con formato de copa.
+            </p>
+            <button class="btn btn-primary btn-sm btn-animated" data-bs-toggle="modal" data-bs-target="#inscripcionModal">
+              Inscribirse
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Voleibol -->
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="card h-100 hover-raise">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Voleibol</h5>
+            <p class="card-text small text-secondary">
+              Partidos al mejor de tres sets en el gimnasio del centro.
+            </p>
+            <button class="btn btn-primary btn-sm btn-animated" data-bs-toggle="modal" data-bs-target="#inscripcionModal">
+              Inscribirse
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-4">
+      <div class="col-12 col-lg-7">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Información para inscripciones</h5>
+            <ul class="small mb-0 text-secondary">
+              <li>Inscripciones por grupos y ciclos formativos.</li>
+              <li>Es necesario un responsable de equipo (profesor/a o tutor/a).</li>
+              <li>Autorización familiar obligatoria para menores de edad.</li>
+              <li>Calendarios provisionales publicados en la sección de resultados.</li>
+              <li>Las actualizaciones importantes se anuncian en Noticias.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary">Cómo seguir la liga</h5>
+            <ol class="small mb-0 text-secondary">
+              <li>Consulta los equipos inscritos por competición.</li>
+              <li>Revisa los resultados tras cada jornada.</li>
+              <li>Comprueba las clasificaciones actualizadas.</li>
+              <li>Accede a la información de jugadores y árbitros.</li>
+              <li>Mantente al día con las noticias de portada.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICIAS RECIENTES (CARRUSEL + CONTADOR) -->
+<section id="noticias" class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h2 class="section-title h3 mb-0">Noticias recientes</h2>
+      <span id="slideCounter" class="badge bg-primary">1/3</span>
+    </div>
+
+    <div id="newsCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Noticia 1"></button>
+        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1" aria-label="Noticia 2"></button>
+        <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2" aria-label="Noticia 3"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/img/noticias/noticia1.jpg" class="d-block w-100" alt="Arranca la temporada">
+          <div class="carousel-caption">
+            <h5>Arranca la temporada 2025/2026</h5>
+            <p class="small">Abierto el plazo de inscripciones para todas las competiciones.</p>
+            <button class="btn btn-sm btn-primary btn-animated" data-bs-toggle="modal" data-bs-target="#noticia1Modal">
+              Leer más
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="/img/noticias/noticia2.jpg" class="d-block w-100" alt="Nuevos árbitros">
+          <div class="carousel-caption">
+            <h5>Nuevos árbitros</h5>
+            <p class="small">Publicada la lista oficial de árbitros de la liga.</p>
+            <button class="btn btn-sm btn-primary btn-animated" data-bs-toggle="modal" data-bs-target="#noticia2Modal">
+              Leer más
+            </button>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="/img/noticias/noticia3.jpg" class="d-block w-100" alt="Actualización del reglamento">
+          <div class="carousel-caption">
+            <h5>Actualización del reglamento</h5>
+            <p class="small">Cambios en las normas para fomentar el juego limpio.</p>
+            <button class="btn btn-sm btn-primary btn-animated" data-bs-toggle="modal" data-bs-target="#noticia3Modal">
+              Leer más
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <p class="text-muted small mt-3 mb-0">
+      Al seleccionar una noticia y pulsar en <strong>“Leer más”</strong>, se abre una
+      ventana emergente con el contenido completo.
+    </p>
+  </div>
+</section>
+
+<!-- MODALES DE NOTICIAS -->
+<div class="modal fade" id="noticia1Modal" tabindex="-1" aria-hidden="true" aria-labelledby="noticia1Label">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="noticia1Label" class="modal-title text-primary">Arranca la temporada 2025/2026</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-secondary">
+        <p>
+          Se abre el plazo de inscripciones para todas las competiciones de la liga
+          deportiva del instituto. Los equipos podrán registrarse a través del
+          formulario de inscripción y en Jefatura de Estudios.
+        </p>
+        <ul>
+          <li>Plazo de inscripciones: del 15 al 30 de septiembre.</li>
+          <li>Inicio previsto de los partidos: segunda semana de octubre.</li>
+          <li>Consulta el reglamento actualizado en el tablón del centro.</li>
+        </ul>
+        <p class="mb-0">
+          Para más información, contacta con el Departamento de Educación Física.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="noticia2Modal" tabindex="-1" aria-hidden="true" aria-labelledby="noticia2Label">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="noticia2Label" class="modal-title text-primary">Nuevos árbitros para la liga</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-secondary">
+        <p>
+          El Departamento de Educación Física ha publicado la lista oficial de árbitros
+          que dirigirán los partidos de la temporada actual. Todos han recibido
+          formación específica sobre normativa, juego limpio y resolución de conflictos.
+        </p>
+        <ul>
+          <li>Asignación de árbitros por competición y jornada.</li>
+          <li>Protocolos de actuación ante incidencias.</li>
+          <li>Compromiso con la igualdad y el respeto entre equipos.</li>
+        </ul>
+        <p class="mb-0">
+          En la sección <strong>Árbitros</strong> de la web se podrá consultar la ficha de cada árbitro
+          y los encuentros asignados.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="noticia3Modal" tabindex="-1" aria-hidden="true" aria-labelledby="noticia3Label">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="noticia3Label" class="modal-title text-primary">Actualización del reglamento de la liga</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-secondary">
+        <p>
+          Se han introducido cambios en el reglamento de la liga con el objetivo de
+          mejorar la convivencia y el juego limpio entre todos los participantes.
+        </p>
+        <ul>
+          <li>Nuevos criterios de desempate en las clasificaciones.</li>
+          <li>Medidas disciplinarias claras ante conductas antideportivas.</li>
+          <li>Procedimiento de reclamaciones y alegaciones.</li>
+        </ul>
+        <p class="mb-0">
+          El reglamento completo puede consultarse en el tablón del pabellón y en la
+          documentación entregada a los responsables de equipo.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN RESULTADOS Y CLASIFICACIONES (INDEX) -->
+<section id="resultados" class="py-5 bg-body-tertiary">
+  <div class="container">
+    <h2 class="section-title h3">Resultados y clasificaciones</h2>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <h3 class="h5 text-primary">Resultados recientes</h3>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Fecha</th>
+                <th>Competición</th>
+                <th>Encuentro</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10/10</td>
+                <td>Fútbol Sala</td>
+                <td>2º DAM vs 1º Bach B</td>
+                <td>3 - 2</td>
+              </tr>
+              <tr>
+                <td>11/10</td>
+                <td>Baloncesto</td>
+                <td>1º SMR vs 1º DAM</td>
+                <td>54 - 60</td>
+              </tr>
+              <tr>
+                <td>12/10</td>
+                <td>Voleibol</td>
+                <td>4º ESO A vs 4º ESO B</td>
+                <td>2 - 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6" id="clasificaciones">
+        <h3 class="h5 text-primary">Clasificación Fútbol Sala</h3>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Pos</th>
+                <th>Equipo</th>
+                <th>PJ</th>
+                <th>PG</th>
+                <th>PE</th>
+                <th>PP</th>
+                <th>Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2º DAM</td>
+                <td>3</td>
+                <td>3</td>
+                <td>0</td>
+                <td>0</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>1º Bach B</td>
+                <td>3</td>
+                <td>2</td>
+                <td>0</td>
+                <td>1</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>1º SMR</td>
+                <td>3</td>
+                <td>1</td>
+                <td>0</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <p class="small text-muted mt-3 mb-0">
+      Las tablas se adaptan automáticamente a móviles, tablets y escritorio gracias
+      al sistema grid y a las tablas responsive de Bootstrap.
+    </p>
+  </div>
+</section>
+
+<!-- SECCIÓN CALENDARIO CON COLLAPSE -->
+<section id="calendario" class="py-5">
+  <div class="container">
+    <h2 class="section-title h3">Calendario de la semana</h2>
+    <p class="small text-secondary">
+      Usa el botón para mostrar u ocultar el calendario. Se registrará en consola
+      la apertura y cierre de la sección.
+    </p>
+    <button
+      class="btn btn-outline-primary btn-animated mb-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#calendarioSemana"
+      aria-expanded="false"
+      aria-controls="calendarioSemana"
+    >
+      Mostrar / ocultar calendario
+    </button>
+
+    <div class="collapse" id="calendarioSemana">
+      <div class="card card-body">
+        <ul class="small mb-0 text-secondary">
+          <li>Lunes: Entrenamientos generales (16:00 - 18:00).</li>
+          <li>Miércoles: Jornadas de fútbol y baloncesto.</li>
+          <li>Viernes: Partidos de voleibol y balonmano.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO RÁPIDO -->
+<section id="contacto" class="py-5">
+  <div class="container">
+    <h2 class="section-title h3">Contacto rápido</h2>
+    <p class="small mb-3 text-secondary">
+      Correo general de la liga:
+      <a href="mailto:liga@instituto-xyz.edu">liga@instituto-xyz.edu</a>
+    </p>
+
+    <form id="inscripcionForm" class="row g-3">
+      <div class="col-12 col-md-6">
+        <label for="nombreEquipo" class="form-label">Nombre del equipo</label>
+        <input type="text" class="form-control" id="nombreEquipo" required>
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="categoria" class="form-label">Categoría</label>
+        <select id="categoria" class="form-select" required>
+          <option value="" selected disabled>Elige una opción</option>
+          <option value="ESO">ESO</option>
+          <option value="Bachillerato">Bachillerato</option>
+          <option value="Ciclos">Ciclos Formativos</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="mensaje" class="form-label">Mensaje / Observaciones</label>
+        <textarea id="mensaje" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary btn-animated">
+          Enviar formulario
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- MODAL DE INSCRIPCIÓN -->
+<div class="modal fade" id="inscripcionModal" tabindex="-1" aria-hidden="true" aria-labelledby="inscripcionLabel">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="inscripcionLabel" class="modal-title text-primary">Inscripción a la competición</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="inscripcionModalForm">
+          <div class="mb-3">
+            <label for="modalNombreEquipo" class="form-label">Nombre del equipo</label>
+            <input type="text" class="form-control" id="modalNombreEquipo" required>
+          </div>
+          <div class="mb-3">
+            <label for="modalCompeticion" class="form-label">Competición</label>
+            <select id="modalCompeticion" class="form-select" required>
+              <option value="" selected disabled>Selecciona competición</option>
+              <option>Fútbol Sala</option>
+              <option>Baloncesto</option>
+              <option>Tenis</option>
+              <option>Balonmano</option>
+              <option>Voleibol</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="modalResponsable" class="form-label">Responsable del equipo</label>
+            <input type="text" class="form-control" id="modalResponsable" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-animated">Enviar inscripción</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST DE CONFIRMACIÓN -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="inscripcionToast" class="toast align-items-center text-bg-primary border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Formulario enviado correctamente. ¡Gracias por participar en la liga!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container py-5">
+  <h1 class="mb-2">Registro</h1>
+  <p class="text-secondary mb-4">Crea un usuario para la liga.</p>
+
+  <form class="row g-3" (submit)="onSubmit($event)">
+    <div class="col-md-6">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" [(ngModel)]="nombre" name="nombre" placeholder="Nombre completo" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input class="form-control" [(ngModel)]="email" name="email" placeholder="correo@ejemplo.com" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Password</label>
+      <input class="form-control" type="password" [(ngModel)]="password" name="password" placeholder="*****" />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Rol</label>
+      <select class="form-select" [(ngModel)]="rol" name="rol">
+        <option value="admin">admin</option>
+        <option value="user">user</option>
+        <option value="arbitro">arbitro</option>
+      </select>
+    </div>
+
+    <div class="col-12 d-flex gap-2 justify-content-end">
+      <a routerLink="/login" class="btn btn-outline-secondary">Ya tengo cuenta</a>
+
+      <button class="btn btn-primary" type="submit" [disabled]="loading">
+        {{ loading ? 'Creando...' : 'Crear cuenta' }}
+      </button>
+    </div>
+
+    <div class="col-12" *ngIf="okMsg">
+      <div class="alert alert-success mb-0">{{ okMsg }}</div>
+    </div>
+
+    <div class="col-12" *ngIf="errorMsg">
+      <div class="alert alert-danger mb-0">{{ errorMsg }}</div>
+    </div>
+  </form>
+</div>
